@@ -63,7 +63,7 @@ function getWeatherApi(event) {
 
       for(i=0;i<data.list.length;i++){
 
-        var wicon = "http://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@4x.png";
+        var wicon = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@4x.png";
         var date = new Date(data.list[i].dt * 1000);
 
         if(i===0){
