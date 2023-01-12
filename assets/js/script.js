@@ -114,12 +114,3 @@ function getWeatherApi(event) {
 }
 
 button.addEventListener('click', getWeatherApi);
-historySearch.addEventListener('click', getWeatherApi);
-
-
-
-
-
-
-
-
