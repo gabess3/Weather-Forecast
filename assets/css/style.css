@@ -1,0 +1,69 @@
+h1 {
+    text-align: center;
+    background-color: blue;
+    color: white;
+    padding: 20px;
+    margin: 0px;
+}
+
+.input {
+    padding: 40px;
+    margin: 20px;
+    text-align: left;
+}
+
+.current {
+    text-align: left;
+    border: 1px solid black;
+    padding: 20px;
+    margin: 20px;
+    width: 50%;
+    position: relative;
+    left: 450px;
+    bottom: 150px;
+    text-align: center;
+    display: block;
+}
+
+.container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.card {
+    margin: 20px;
+    padding: 20px;
+    background-color: darkblue;
+    color: white;
+    border-radius: 10px;
+    width: 18%;
+    text-align: center;
+}
+
+.fiveDay {
+    position: relative;
+    left: 20px;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+.list {
+    position: relative;
+    bottom: 200px;
+}
+
+.list button {
+    display: block;
+    border: 1px solid black;
+    margin: 10px;
+    padding: 10px;
+    background-color: grey;
+    color: white;
+}
+
+.list button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
