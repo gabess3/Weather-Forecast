@@ -48,7 +48,8 @@ function storeSearch() {
 };
 
 
-function getWeatherApi() {
+function getWeatherApi(event) {
+  event.stopImmediatePropagation();
 
   var requestUrl = "http://api.openweathermap.org/data/2.5/forecast/?q="+searchInfo.value.replace(/\s/g, "")+"&units=imperial&APPID=5b363f0d85d1d8e70ad27ba598ac067c";
 
@@ -113,6 +114,7 @@ function getWeatherApi() {
 }
 
 button.addEventListener('click', getWeatherApi);
+historySearch.addEventListener('click', getWeatherApi);
 
 
 
