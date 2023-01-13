@@ -1,5 +1,5 @@
 var searchInfo = document.querySelector(".input-value");
-var button = document.getElementById("submit");
+var searchButton = document.getElementById("submit");
 
 var dayCurrent = document.getElementById("dayCurrent");
 var day1 = document.getElementById("day1");
@@ -36,22 +36,23 @@ var wind3 = document.getElementById('wind3');
 var wind4 = document.getElementById('wind4');
 var wind5 = document.getElementById('wind5');
 
-var searchValue = 1;
+var searchValue = 0;
 var historySearch = document.getElementById("history");
+
 
 function storeSearch() {
   localStorage.setItem("search " + searchValue, searchInfo.value);
   var historyButton = document.createElement("button");
+  historyButton.setAttribute("class", "btn");
   historyButton.textContent = localStorage.getItem("search " + searchValue);
   historySearch.appendChild(historyButton);
   searchValue++;
 };
 
+function getWeatherApi() {
 
-function getWeatherApi(event) {
-  event.stopImmediatePropagation();
-
-  var requestUrl = "https://api.openweathermap.org/data/2.5/forecast/?q="+searchInfo.value.replace(/\s/g, "")+"&units=imperial&APPID=5b363f0d85d1d8e70ad27ba598ac067c";
+  var urlContent = searchInfo.value.replace(/\s/g, "");
+  var requestUrl = "https://api.openweathermap.org/data/2.5/forecast/?q="+ urlContent +"&units=imperial&APPID=5b363f0d85d1d8e70ad27ba598ac067c";
 
   fetch(requestUrl)
     .then(function (response) {
@@ -61,7 +62,7 @@ function getWeatherApi(event) {
       console.log(data);
 
 
-      for(i=0;i<data.list.length;i++){
+      for(var i=0;i<data.list.length;i++){
 
         var wicon = "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@4x.png";
         var date = new Date(data.list[i].dt * 1000);
@@ -113,4 +114,9 @@ function getWeatherApi(event) {
   storeSearch();
 }
 
-button.addEventListener('click', getWeatherApi);
+searchButton.addEventListener('click', getWeatherApi);
+
+historySearch.addEventListener("click", function(event){
+  searchInfo.value = event.target.textContent;
+  getWeatherApi();
+})
