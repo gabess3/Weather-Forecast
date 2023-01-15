@@ -44,6 +44,7 @@ function storeSearch() {
   localStorage.setItem("search " + searchValue, searchInfo.value);
   var historyButton = document.createElement("button");
   historyButton.setAttribute("class", "btn");
+  historyButton.setAttribute("id", "btn" + searchValue);
   historyButton.textContent = localStorage.getItem("search " + searchValue);
   historySearch.appendChild(historyButton);
   searchValue++;
@@ -118,5 +119,7 @@ searchButton.addEventListener('click', getWeatherApi);
 
 historySearch.addEventListener("click", function(event){
   searchInfo.value = event.target.textContent;
+  var removeHistoryButton = event.target;
   getWeatherApi();
+  removeHistoryButton.remove()
 })
